@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Threading;
 using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
+using TestTask.Algorithms;
 
 namespace TestTask
 {
@@ -14,16 +16,28 @@ namespace TestTask
         private void RenderButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-
             ofd.Filter = "Image Files (*.BMP;*.PNG)|*.BMP;*.PNG|All files (*.*)|*.*";
-            if (ofd.ShowDialog() == DialogResult.OK)
+
+            Thread thread = new Thread(() =>
             {
                 Picture.Image = new Bitmap(ofd.FileName);
-                //do some render
+                IRender renderer = new CanvasRender();
+                renderer.render(new Bitmap(ofd.FileName));
+            })
+            { Priority = ThreadPriority.Normal };
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                thread.Start();
             }
         }
 
         private void Picture_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

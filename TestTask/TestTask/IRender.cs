@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestTask
+namespace TestTask.Algorithms
 {
     interface IRender
     {
-        void MathPart(BitmapLocker input_picture);
+        void render(Bitmap input_image);
     }
 }
