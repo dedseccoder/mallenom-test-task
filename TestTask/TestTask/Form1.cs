@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading;
+using System.Threading.Tasks;
 using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
@@ -18,17 +18,11 @@ namespace TestTask
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Image Files (*.BMP;*.PNG)|*.BMP;*.PNG|All files (*.*)|*.*";
 
-            Thread thread = new Thread(() =>
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
                 Picture.Image = new Bitmap(ofd.FileName);
                 IRender renderer = new CanvasRender();
                 renderer.render(new Bitmap(ofd.FileName));
-            })
-            { Priority = ThreadPriority.Normal };
-
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                thread.Start();
             }
         }
 
