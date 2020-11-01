@@ -9,6 +9,6 @@ namespace TestTask.Algorithms
 {
     abstract class Algorithm
     {
-        public abstract void MathPart(Bitmap input_picture, int threshold);
+        public abstract void MathPart(Bitmap input_picture);
     }
 }

@@ -9,7 +9,7 @@ namespace TestTask.Algorithms
 {
     class GradientAlgorithm : Algorithm
     {
-        public override void MathPart(Bitmap input_picture, int threshold)
+        public override void MathPart(Bitmap input_picture)
         {
 
         }
