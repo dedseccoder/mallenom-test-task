@@ -9,6 +9,6 @@ namespace TestTask
 {
     interface IRender
     {
-        void MathPart(Bitmap InputPicture);
+        void MathPart(BitmapLocker input_picture);
     }
 }
