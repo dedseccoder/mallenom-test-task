@@ -16,7 +16,6 @@ namespace TestTask
             LabelObj.Text = "";
             ComboBoxObj.Items.AddRange(new string[] { "контраст", "градиент" });
         }
-        public Bitmap picture, rendered_picture;
         private void RenderButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -24,8 +23,6 @@ namespace TestTask
 
             if(ofd.ShowDialog() == DialogResult.OK)
             {
-              //  IRender renderer = new CanvasRender();
-                picture = new Bitmap (ofd.FileName);
                 Picture.Image = new Bitmap(ofd.FileName);
 
                 if(ComboBoxObj.SelectedItem != null)
