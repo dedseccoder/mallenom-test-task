@@ -59,7 +59,7 @@ namespace TestTask
                 else if(ComboBoxObj.SelectedItem.ToString() == "градиент")
                 {
                     GradientAlgorithm gradient = new GradientAlgorithm();
-                    gradient.grayscale = false;
+                    gradient.grayscale = true;
                     RenderedPictureBox.Image = gradient.MathPart(picture);
                 }
             };
