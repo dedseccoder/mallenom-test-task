@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 
@@ -104,9 +105,9 @@ namespace TestTask.Algorithms
 
                     byteOffset = OffsetY * srcData.Stride + OffsetX * 4;
 
-                    for (int filterY = -filterOffset; filterY <= filterOffset; filterY++)
+                    for(int filterY = -filterOffset; filterY <= filterOffset; filterY++)
                     {
-                        for (int filterX = -filterOffset; filterX <= filterOffset; filterX++)
+                        for(int filterX = -filterOffset; filterX <= filterOffset; filterX++)
                         {
                             calcOffset = byteOffset + filterX * 4 + filterY * srcData.Stride;
                             xb += (double)(pixelBuffer[calcOffset]) * xkernel[filterY + filterOffset, filterX + filterOffset];
@@ -122,12 +123,12 @@ namespace TestTask.Algorithms
                     gt = Math.Sqrt((xg * xg) + (yg * yg));
                     rt = Math.Sqrt((xr * xr) + (yr * yr));
 
-                    if (bt > 255) bt = 255;
-                    else if (bt < 0) bt = 0;
-                    if (gt > 255) gt = 255;
-                    else if (gt < 0) gt = 0;
-                    if (rt > 255) rt = 255;
-                    else if (rt < 0) rt = 0;
+                    if(bt > 255) bt = 255;
+                    else if(bt < 0) bt = 0;
+                    if(gt > 255) gt = 255;
+                    else if(gt < 0) gt = 0;
+                    if(rt > 255) rt = 255;
+                    else if(rt < 0) rt = 0;
 
                     resultBuffer[byteOffset] = (byte)(bt);
                     resultBuffer[byteOffset + 1] = (byte)(gt);

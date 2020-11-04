@@ -87,6 +87,7 @@
             this.RenderedPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.RenderedPictureBox.TabIndex = 4;
             this.RenderedPictureBox.TabStop = false;
+            this.RenderedPictureBox.Click += new System.EventHandler(this.RenderedPictureBox_Click);
             // 
             // Form1
             // 
@@ -110,10 +111,10 @@
         #endregion
 
         private System.Windows.Forms.Button RenderButton;
-        private System.Windows.Forms.ComboBox ComboBoxObj;
         private System.Windows.Forms.Label LabelObj;
         public System.Windows.Forms.PictureBox Picture;
         public System.Windows.Forms.PictureBox RenderedPictureBox;
+        public System.Windows.Forms.ComboBox ComboBoxObj;
     }
 }
 

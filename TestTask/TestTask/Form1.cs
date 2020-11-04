@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Threading;
 using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
@@ -16,6 +17,7 @@ namespace TestTask
             LabelObj.Text = "";
             ComboBoxObj.Items.AddRange(new string[] { "контраст", "градиент" });
         }
+        public Bitmap picture;
         private void RenderButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -23,26 +25,49 @@ namespace TestTask
 
             if(ofd.ShowDialog() == DialogResult.OK)
             {
-                Picture.Image = new Bitmap(ofd.FileName);
+                picture = new Bitmap(ofd.FileName);
+
+                Picture.Image = picture;
 
                 if(ComboBoxObj.SelectedItem != null)
                 {
-                    if(ComboBoxObj.SelectedItem.ToString() == "контраст")
-                    {
-                        ContrastAlgorithm contrast = new ContrastAlgorithm();
-                        RenderedPictureBox.Image = contrast.MathPart(new Bitmap(ofd.FileName));
-                    }
-                    else if(ComboBoxObj.SelectedItem.ToString() == "градиент")
-                    {
-                        GradientAlgorithm gradient = new GradientAlgorithm();
-                        gradient.grayscale = true;
-                        RenderedPictureBox.Image = gradient.MathPart(new Bitmap(ofd.FileName));
-                    }
+
+                    Thread thread = new Thread(RenderThreadHandler) { Priority = ThreadPriority.AboveNormal };
+                    thread.Name = "second thread";
+                    thread.Start();
+                    Thread.Sleep(500);
+                    thread.Abort();
                 }
                 else
                 {
                     LabelObj.Text = "Что-то пошло не так";
                 }
+            }
+        }
+
+        public void RenderThreadHandler()
+        {
+            Action action = () =>
+            {
+                if(ComboBoxObj.SelectedItem.ToString() == "контраст")
+                {
+                    ContrastAlgorithm contrast = new ContrastAlgorithm();
+                    RenderedPictureBox.Image = contrast.MathPart(picture);
+                }
+                else if(ComboBoxObj.SelectedItem.ToString() == "градиент")
+                {
+                    GradientAlgorithm gradient = new GradientAlgorithm();
+                    gradient.grayscale = true;
+                    RenderedPictureBox.Image = gradient.MathPart(picture);
+                }
+            };
+            if(InvokeRequired)
+            {
+                Invoke(action);
+            }
+            else
+            {
+                action();
             }
         }
         private void Picture_Click(object sender, EventArgs e)
@@ -51,6 +76,11 @@ namespace TestTask
         }
 
         private void ComboBoxObj_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RenderedPictureBox_Click(object sender, EventArgs e)
         {
 
         }
