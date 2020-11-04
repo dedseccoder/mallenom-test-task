@@ -15,6 +15,8 @@ namespace TestTask
         {
             InitializeComponent();
             LabelObj.Text = "";
+            LabelObj.ForeColor = Color.FromArgb(32,32,32);
+
             ComboBoxObj.Items.AddRange(new string[] { "контраст", "градиент" });
         }
         public Bitmap picture;
@@ -57,7 +59,7 @@ namespace TestTask
                 else if(ComboBoxObj.SelectedItem.ToString() == "градиент")
                 {
                     GradientAlgorithm gradient = new GradientAlgorithm();
-                    gradient.grayscale = true;
+                    gradient.grayscale = false;
                     RenderedPictureBox.Image = gradient.MathPart(picture);
                 }
             };

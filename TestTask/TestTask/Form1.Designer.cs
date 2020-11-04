@@ -39,7 +39,7 @@
             // 
             // RenderButton
             // 
-            this.RenderButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RenderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RenderButton.Location = new System.Drawing.Point(527, 342);
             this.RenderButton.Name = "RenderButton";
             this.RenderButton.Size = new System.Drawing.Size(206, 39);
