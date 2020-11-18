@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace TestTask.Algorithms
 {
-    abstract class Algorithm
+    public interface IAlgorithm
     {
-        public abstract Bitmap MathPart(Bitmap input_picture);
+        Bitmap MathPart(Bitmap input_picture);
     }
 }

@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 
 namespace TestTask.Algorithms
 {
-    class GradientAlgorithm : Algorithm
+    class GradientAlgorithm : IAlgorithm
     {
         public double[,] XSobel
         {
@@ -42,9 +42,9 @@ namespace TestTask.Algorithms
             }
         }
 
-        public bool grayscale = false;
+        public bool Grayscale { get; set; } = false;
 
-        public override Bitmap MathPart(Bitmap input_picture)
+        public Bitmap MathPart(Bitmap input_picture)
         {
             double[,] xkernel = XSobel;
             double[,] ykernel = YSobel;
@@ -67,7 +67,7 @@ namespace TestTask.Algorithms
 
             input_picture.UnlockBits(srcData);
 
-            if(grayscale == true)
+            if(Grayscale == true)
             {
                 float rgb = 0;
                 for(int i = 0; i < pixelBuffer.Length; i += 4)

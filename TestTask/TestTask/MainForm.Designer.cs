@@ -1,6 +1,6 @@
 ﻿namespace TestTask
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.RenderButton = new System.Windows.Forms.Button();
-            this.Picture = new System.Windows.Forms.PictureBox();
+            this.PictureBox = new System.Windows.Forms.PictureBox();
             this.ComboBoxObj = new System.Windows.Forms.ComboBox();
             this.LabelObj = new System.Windows.Forms.Label();
             this.RenderedPictureBox = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RenderedPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,14 +50,14 @@
             // 
             // Picture
             // 
-            this.Picture.InitialImage = null;
-            this.Picture.Location = new System.Drawing.Point(13, 53);
-            this.Picture.Name = "Picture";
-            this.Picture.Size = new System.Drawing.Size(233, 275);
-            this.Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Picture.TabIndex = 1;
-            this.Picture.TabStop = false;
-            this.Picture.Click += new System.EventHandler(this.Picture_Click);
+            this.PictureBox.InitialImage = null;
+            this.PictureBox.Location = new System.Drawing.Point(13, 53);
+            this.PictureBox.Name = "Picture";
+            this.PictureBox.Size = new System.Drawing.Size(233, 275);
+            this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PictureBox.TabIndex = 1;
+            this.PictureBox.TabStop = false;
+            this.PictureBox.Click += new System.EventHandler(this.Picture_Click);
             // 
             // ComboBoxObj
             // 
@@ -97,11 +97,11 @@
             this.Controls.Add(this.RenderedPictureBox);
             this.Controls.Add(this.LabelObj);
             this.Controls.Add(this.ComboBoxObj);
-            this.Controls.Add(this.Picture);
+            this.Controls.Add(this.PictureBox);
             this.Controls.Add(this.RenderButton);
             this.Name = "Form1";
             this.Text = "Test task";
-            ((System.ComponentModel.ISupportInitialize)(this.Picture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RenderedPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -112,7 +112,7 @@
 
         private System.Windows.Forms.Button RenderButton;
         private System.Windows.Forms.Label LabelObj;
-        public System.Windows.Forms.PictureBox Picture;
+        public System.Windows.Forms.PictureBox PictureBox;
         public System.Windows.Forms.PictureBox RenderedPictureBox;
         public System.Windows.Forms.ComboBox ComboBoxObj;
     }

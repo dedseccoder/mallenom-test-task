@@ -12,10 +12,10 @@ using System.Windows.Forms.VisualStyles;
 
 namespace TestTask.Algorithms
 {
-    class ContrastAlgorithm : Algorithm
+    class ContrastAlgorithm : IAlgorithm
     {
 
-        public override Bitmap MathPart(Bitmap input_picture)
+        public Bitmap MathPart(Bitmap input_picture)
         {
             int red, green, blue;
             var contrast = Math.Pow((100.0 + 5000) / 100.0, 2);
